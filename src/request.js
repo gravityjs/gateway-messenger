@@ -9,6 +9,7 @@ export default function (context, frame) {
 
   const isValidReply = (message, replyMessage) =>
     message.uid &&
+    message.name &&
     replyMessage.replyTo &&
     message.uid === replyMessage.replyTo.uid;
 

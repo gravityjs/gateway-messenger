@@ -11,6 +11,7 @@ export default function (context) {
       const replyMessage = Object.assign({
         replyTo: {
           uid: requestMessage.uid,
+          name: requestMessage.name,
         },
       }, message);
 
