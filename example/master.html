@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Master</title>
+  <script src="../dist/messenger.js"></script>
+</head>
+<body>
+  <div>Master</div>
+  <iframe src="slave.html"></iframe>
+  <button onclick="send()">Send</button>
+  <script>
+    const send = () => {
+      const request = window.gravity.messenger.request;
+
+      request.post(window.frames[0]).then((result) => {
+        console.log('result', result);
+      }).catch((error) => {
+        console.log('error', error);
+      });
+    };
+  </script>
+</body>
+</html>

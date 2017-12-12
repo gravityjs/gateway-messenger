@@ -6,7 +6,9 @@
   "main": "dist/gravity-messenger.min.js",
   "private": false,
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "webpack --watch"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -15,5 +17,17 @@
     "url": "https://github.com/manico/gravity-messenger.git"
   },
   "peerDependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.13.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "webpack": "^3.10.0"
+  }
 }

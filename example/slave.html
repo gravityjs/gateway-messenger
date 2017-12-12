@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slave</title>
+  <script src="../dist/messenger.js"></script>
+</head>
+<body>
+  <div>Slave</div>
+  <script>
+    window.addEventListener('message', (event) => {
+      window.parent.postMessage({
+        reply: true,
+        uid: event.data.uid
+      }, '*');
+    });
+  </script>
+</body>
+</html>
