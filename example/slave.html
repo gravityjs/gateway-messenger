@@ -8,11 +8,10 @@
 <body>
   <div>Slave</div>
   <script>
-    window.addEventListener('message', (event) => {
-      window.parent.postMessage({
-        reply: true,
-        uid: event.data.uid
-      }, '*');
+    const messenger = window.gravity.messenger;
+
+    messenger.reply('MyEvent', {
+      hello: 'world'
     });
   </script>
 </body>

@@ -11,9 +11,12 @@
   <button onclick="send()">Send</button>
   <script>
     const send = () => {
-      const request = window.gravity.messenger.request;
+      const messenger = window.gravity.messenger;
+      const request = messenger.request(window.frames[0]);
 
-      request.post(window.frames[0]).then((result) => {
+      request.post({
+        name: 'MyEvent'
+      }).then((result) => {
         console.log('result', result);
       }).catch((error) => {
         console.log('error', error);

@@ -1,4 +1,4 @@
-export default function (context) {
+export default function (context, frame) {
   const errors = {
     invalidMessageUid: 'Mismatch between request and reply message uid',
     replyTimeout: 'Reply timeout reached',
@@ -8,11 +8,12 @@ export default function (context) {
     new Error(error);
 
   const isValidReply = (message, replyMessage) =>
-    message.uid !== undefined &&
-    message.uid === replyMessage.uid;
+    message.uid &&
+    replyMessage.replyTo &&
+    message.uid === replyMessage.replyTo.uid;
 
   return {
-    post (frame, message, targetOrigin) {
+    post (message, targetOrigin) {
       const requestMessage = Object.assign({
         uid: Date.now(),
         timeout: 100,
@@ -28,7 +29,7 @@ export default function (context) {
           context.removeEventListener('message', replyHandler);
           context.clearTimeout(replyTimeout);
 
-          if (isValidReply(replyMessage, requestMessage)) {
+          if (isValidReply(requestMessage, replyMessage)) {
             resolve(replyMessage);
           }
 
